@@ -30,29 +30,14 @@ function isMobile() {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
 
-function artistWidth(){
-  var container_width = $(".artist").outerWidth()
-  var picture_width = $(".artist > .picture").outerWidth()
-  
-  var info_width = container_width - picture_width;
-  
-  $(".artist > .info").css("width", info_width - 5);
-}
 
-function gigWidth(){
-  var container_width = $(".show").outerWidth()
-  var picture_width = $(".show > .picture").outerWidth()
-  
-  var info_width = container_width - picture_width;
-  
-  $(".show > .info").css("width", info_width - 5);
-}
+
 
 $(document).ready(function(){
 
   hoverColor(".facebook", "#3b5998");
   hoverColor(".twitter", "#4099ff");
-  hoverColor(".instagram", "#454545");
+  hoverColor(".youtube", "#cc181e");
   
   var menu_open = false;
   
@@ -72,8 +57,7 @@ $(document).ready(function(){
     centerVertical(".index-screen", ".center-container"); //home page text
     centerVertical(".cover-picture", ".center-text-page"); //home page text
     
-    artistWidth(); //fixes the width of artist container on mobile
-    gigWidth(); //fixes the width of artist container on mobile
+   
 
   }
   
