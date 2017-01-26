@@ -10,16 +10,16 @@ function hoverColor(className, color){
 }
 
 function centerVertical(parent, subject) {
+  console.log("why?")
   $(parent).css( "paddingTop", 0); //resets size of div
   var parent_height = $(parent).height();
   var subject_height = $(subject).outerHeight();
 
-  var padding_amount = (parent_height - subject_height) / 2;
-
-  if ($(".is-home-page").height()){ // is a dirty fix for mobile, tried using a script to adjust height but typekit loading fucks with it. Only loads on homepage
-    console.log("is home page");
-    padding_amount = padding_amount;
+  if ($(".index-screen").length > 0) {
+    parent_height -= $(".navigation").height();
   }
+
+  var padding_amount = (parent_height - subject_height) / 2;
 
   console.log("subject height: " + subject_height);
   console.log("parent height: " + parent_height);
@@ -34,7 +34,7 @@ function isMobile() {
 
 
 $(document).ready(function(){
-
+  //fades in cover images on home page
   if ($(".index-screen").length > 0) {
     $(".index-screen").css({"display": "none"})
 
@@ -61,11 +61,11 @@ $(document).ready(function(){
     }
   })
 
-  if (isMobile()) {
-
-    centerVertical(".index-screen", ".center-container"); //home page text
-    centerVertical(".cover-picture", ".center-text-page"); //home page text
-
+  if ( $(window).width() < 400) {
+    $(window).on("load", function(){
+      centerVertical(".index-screen", ".center-container"); //home page text
+      centerVertical(".cover-picture", ".center-text-page"); //home page text
+    });
 
 
   }
